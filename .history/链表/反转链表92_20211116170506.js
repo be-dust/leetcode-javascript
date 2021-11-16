@@ -51,7 +51,7 @@ var reverseBetween = function (head, left, right) {
     p = p.next;
   }
 
-  let endNode = p;
+  let endNode = p.next;
   let end = endNode.next;
 
   endNode.next = null;

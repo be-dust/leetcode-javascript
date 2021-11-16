@@ -1,7 +1,7 @@
 /**
  * 节点的类
  */
-class ListNode {
+export class ListNode {
   /**
    *
    * @param {*} data 此结点存放的数据
@@ -12,7 +12,7 @@ class ListNode {
     this.next = next;
   }
 }
-class List {
+export class List {
   constructor() {
     //第一个元素的引用地址 它向链表中的第一个元素
     this.head = null;
@@ -103,7 +103,7 @@ class List {
 // list.add(0, d);
 // list.print();
 
-function makeList(arr) {
+export function makeList(arr) {
   let list = new List();
   for (let i = 0; i < arr.length; i++) {
     let node = new ListNode(arr[i]);

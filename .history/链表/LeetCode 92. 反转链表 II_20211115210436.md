@@ -40,7 +40,7 @@
  */
 var reverseBetween = function (head, m, n) {
   let reverse = (pre, cur) => {
-    if (!cur) return pre; // 返回的就是原链表的尾结点也就是新链表的头结点
+    if (!cur) return pre;
     let tmp = cur.next;
     cur.next = pre;
     return reverse(cur, tmp);

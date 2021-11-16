@@ -1,4 +1,5 @@
-const { ListNode, makeList } = require('./创建单链表');
+import { ListNode, makeList } from './创建单链表';
+
 let list = makeList([1, 2, 3, 4, 5]);
 
 /**
@@ -35,30 +36,8 @@ var reverseBetween = function (head, left, right) {
   };
 
   let dummyNode = new ListNode();
-  dummyNode.next = head;
 
-  let k = left - 1;
-  let p = dummyNode;
-
-  while (k--) {
-    p = p.next;
-  }
-  let front = p;
-  let frontNode = front.next;
-
-  k = right - left + 1;
-  while (k--) {
-    p = p.next;
-  }
-
-  let endNode = p;
-  let end = endNode.next;
-
-  endNode.next = null;
-  front.next = reverse(null, frontNode);
-  frontNode.next = end;
-
-  return dummyNode.next;
+  return head;
 };
 
 reverseBetween(list.head, 2, 4);

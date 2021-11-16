@@ -50,8 +50,8 @@ var reverseBetween = function (head, left, right) {
   while (k--) {
     p = p.next;
   }
-
-  let endNode = p;
+  console.log(p === front);
+  let endNode = p.next;
   let end = endNode.next;
 
   endNode.next = null;

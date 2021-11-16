@@ -40,7 +40,7 @@
  */
 var reverseBetween = function (head, m, n) {
   let reverse = (pre, cur) => {
-    if (!cur) return pre; // 返回的就是原链表的尾结点也就是新链表的头结点
+    if (!cur) return pre;
     let tmp = cur.next;
     cur.next = pre;
     return reverse(cur, tmp);
@@ -67,9 +67,9 @@ var reverseBetween = function (head, m, n) {
   // 保存后继节点
   let end = endNode.next;
   // 将后继值为空，开始反转链表
-  // 构造出一个“新的链表"（链表的最后一个节点的next为null）
+  // 构造出一个“新的”链表（链表的最后一个节点的next为null）
   endNode.next = null;
-  // reverse 返回的就是“新链表”反转之后的头结点
+  // reverse 返回的就是反转之后的头结点
   front.next = reverse(null, frontNode);
   // 原本的反转链表部分的头节点现在变成了尾节点，指向原本的后继节点
   frontNode.next = end;
