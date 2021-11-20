@@ -62,4 +62,4 @@ var reverseBetween = function (head, left, right) {
 };
 
 reverseBetween(list.head, 2, 4);
-console.log(list.print());
+list.print();
