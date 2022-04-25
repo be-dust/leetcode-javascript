@@ -13,6 +13,7 @@
 // s 由小写英文字母组成
 
 /**
+ *  https://leetcode-cn.com/problems/remove-duplicate-letters/
  *  思路：后来的先匹配考虑用栈
  * 1. 找到重复的字符
  * 2. 原字符串依次入栈，入栈时判断当前字符和栈顶字符的字典排序大小，如果小于并且栈顶元素是重复元素则栈顶元素出栈, 需要注意因为重复而出栈的次数是有限的，否则一些大的重复的字母就可能一直不能入栈。
@@ -30,6 +31,7 @@ var removeDuplicateLetters = function (s) {
 
   const arr = [s[0]];
   for (let i = 1; i < s.length; i++) {
+    // 不存在单调栈中的元素进行入栈
     if (!arr.includes(s[i])) {
       let top = arr[arr.length - 1];
       // 循环判断栈顶元素和当前元素的关系
