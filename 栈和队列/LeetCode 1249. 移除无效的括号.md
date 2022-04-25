@@ -1,7 +1,9 @@
 ![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2Nob2NvbGF0ZTE5OTkvY2RuL2ltZy8yMDIwMDgyODE0NTUyMS5qcGc?x-oss-process=image/format,png)
->仰望星空的人，不应该被嘲笑
+
+> 仰望星空的人，不应该被嘲笑
 
 ## 题目描述
+
 给你一个由` '('`、`')'` 和小写字母组成的字符串 `s`。
 
 你需要从字符串中删除最少数目的 `'('` 或者 `')' `（可以删除任意位置的括号)，使得剩下的「括号字符串」有效。
@@ -13,7 +15,6 @@
 空字符串或只包含小写字母的字符串
 可以被写作 `AB`（A 连接 B）的字符串，其中 `A` 和 `B` 都是有效「括号字符串」
 可以被写作 (A) 的字符串，其中 `A` 是一个有效的「括号字符串」
- 
 
 示例 1：
 
@@ -45,8 +46,6 @@
 输出："a(b(c)d)"
 ```
 
- 
-
 提示：
 
 ```javascript
@@ -58,8 +57,8 @@ s[i] 可能是 '('、')' 或英文小写字母
 链接：https://leetcode-cn.com/problems/minimum-remove-to-make-valid-parentheses
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-
 ## 解题思路
+
 一开始我是想着只要对应括号匹配就好了，将多余的右括号删掉，但是这个样例 `))((` 不可能过的，因为左括号也可以不匹配呀。于是我想着将括号对应字符串索引存起来，起初我们可以将不匹配的右括号还是按原来方法删掉就好了，匹配一个就删掉一个对应左括号的索引值，最后多出来的索引值全删掉就好了，这样就不会出现左括号还余留的情况。
 
 这里提示一下：不要用 `splice`去删除指定下标的元素，`splice`会改变原数组长度，而你原本存的下标是基于原数组的。
@@ -68,30 +67,29 @@ s[i] 可能是 '('、')' 或英文小写字母
 最后通过 `res.join('')` 方法，将数组转换成我们最后要的字符串即可。
 
 ```javascript
-var minRemoveToMakeValid = function(s) {
-    let res = [...s]
-    let stack = []
-    for(let i=-0;i<s.length;i++){
-        let ch = s[i]
-        if(ch === '('){
-            stack.push(i)
-        }else if(ch === ')'){
-            if(stack.length) stack.pop()
-            else delete(res[i])
-        }
+var minRemoveToMakeValid = function (s) {
+  let res = [...s];
+  let stack = [];
+  for (let i = -0; i < s.length; i++) {
+    let ch = s[i];
+    if (ch === '(') {
+      stack.push(i);
+    } else if (ch === ')') {
+      if (stack.length) stack.pop();
+      else delete res[i];
     }
-    while(stack.length){
-        let idx = stack.pop()
-        delete(res[idx])
-    }
-    res = res.filter(item=>item)
-    return res.join('')
+  }
+  while (stack.length) {
+    let idx = stack.pop();
+    delete res[idx];
+  }
+  res = res.filter((item) => item);
+  return res.join('');
 };
 ```
 
-
-
 ## 最后
+
 文章产出不易，还望各位小伙伴们支持一波！
 
 往期精选：
@@ -105,4 +103,3 @@ var minRemoveToMakeValid = function(s) {
 ```javascript
 学如逆水行舟，不进则退
 ```
-

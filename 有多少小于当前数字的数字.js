@@ -76,6 +76,7 @@ console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));
 //对数组进行排序，并记录每一个数在原数组中的位置。对于排序后的数组中每一个数，我们找出其左侧第一个小于它的数，这样就能够知道数组中小于该数字的数量
 var smallerNumbersThanCurrent2 = function (nums) {
   const n = nums.length;
+
   // [[0, 0], [0, 0], ...]
   // 记录原索引和值
   const data = new Array(n).fill(0).map((v) => new Array(2).fill(0));
@@ -83,12 +84,16 @@ var smallerNumbersThanCurrent2 = function (nums) {
     data[i][0] = nums[i];
     data[i][1] = i;
   }
+
+  // 按照从小到大排序
   data.sort((a, b) => a[0] - b[0]);
+
   const ret = new Array(n);
+
   let prev = -1;
   for (let i = 0; i < n; ++i) {
     // [1,2,2,3,8]
-    // 使用prev来越过重复元素, 比如第二个2和第一个2重复，那么就取上一次的pre，也就是取第一个2满足条件的pre
+    // 注意重复元素的判断，只有当值变化的时候才去更新 prev
     if (prev == -1 || data[i][0] !== data[i - 1][0]) {
       prev = i;
     }

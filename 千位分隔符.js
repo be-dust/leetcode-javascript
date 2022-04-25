@@ -37,13 +37,15 @@ var thousandSeparator2 = function (n) {
   let count = 0;
   let ans = '';
   do {
-    let cur = n % 10; // 最后一位
+    let cur = n % 10; // 取最后一位
     n = Math.floor(n / 10); // 取整数部分
-    ans += cur.toString(); // "432"
+    ans += cur.toString(); // "432", 从最低位到最高位处理所以这里是倒序
     ++count;
     if (count % 3 === 0 && n) {
       ans += '.'; // "432."
     }
   } while (n);
+  console.log(ans);
   return ans.split('').reverse().join('');
 };
+console.log(thousandSeparator2(123456789));
