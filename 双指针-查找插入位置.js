@@ -38,10 +38,10 @@ var searchInsert = function (nums, target) {
   let start = 0,
     end = nums.length - 1;
   while (start <= end) {
-    // 右半部分的下标要加上start
+    // mid是以start为起点，所以叫加上start
     let mid = start + Math.floor((end - start) / 2);
     if (target === nums[mid]) {
-      return mid;
+      return mid; // while中使用return可以中断循环
     }
     console.log(mid);
     if (target < nums[mid]) {

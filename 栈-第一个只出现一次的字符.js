@@ -23,6 +23,7 @@ var firstUniqChar = function (s) {
       notOnes.push(s[i]);
       onlyOnes.splice(index, 1);
     } else {
+      // 不是重复的元素才入栈
       if (notOnes.indexOf(s[i]) === -1) {
         onlyOnes.push(s[i]);
       }
