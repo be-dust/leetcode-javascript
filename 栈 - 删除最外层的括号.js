@@ -38,17 +38,18 @@ var removeOuterParentheses = function (s) {
   let result = '';
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === '(') {
-      stack.push(s[i]);
-    }
-
     if (s[i] === ')') {
       stack.pop();
     }
 
     // 当栈为空时说明一个原语就结束了
     if (stack.length) {
-      res += s[i];
+      result += s[i];
+    }
+
+    // 不能先 push，栈空了之后才能继续 push
+    if (s[i] === '(') {
+      stack.push(s[i]);
     }
   }
   return result;
